@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 322.47 113.62">
-  <rect width="322.47" height="113.62" fill="#312783" stroke-width="0"/>
-  <text transform="translate(23.2 77.13)" font-family="ErasITC-Demi, &apos;Eras Demi ITC&apos;" font-size="68" font-weight="300"><tspan x="0" y="0" fill="#f6f6f6" letter-spacing="0em">Autono</tspan><tspan x="246.9" y="0" fill="#f9b233" letter-spacing="0em">r</tspan></text>
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: ErasITC-Demi, 'Eras Demi ITC';
+        font-size: 68px;
+        font-weight: 300;
+      }
+
+      .cls-2 {
+        fill: #f9b233;
+        letter-spacing: 0em;
+      }
+
+      .cls-3 {
+        fill: #312783;
+        stroke-width: 0px;
+      }
+
+      .cls-4 {
+        fill: #f6f6f6;
+        letter-spacing: 0em;
+      }
+    </style>
+  </defs>
+  <rect class="cls-3" width="322.47" height="113.62"/>
+  <text class="cls-1" transform="translate(23.2 77.13)"><tspan class="cls-4" x="0" y="0">Autono</tspan><tspan class="cls-2" x="246.9" y="0">r</tspan></text>
 </svg>
