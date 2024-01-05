@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://gestao-viaturas-manutencao.vercel.app/"; //URL DA VOSSA WEBI API!
+const API_URL = "https://gestao-viaturas-manutencao.vercel.app/api/auth/"; //URL DA VOSSA WEBI API!
 
 const register = (name, email, password) => {
     return axios.post(API_URL + "signup", {
