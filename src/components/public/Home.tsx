@@ -7,7 +7,7 @@ const Home = () => {
             <div className="container py-4">
                 <div className="p-5 mb-4 bg-body-tertiary rounded">
                     <div className="container-fluid py-5 ">
-                        <h1 className="display-5 fw-bold">Olá👋</h1>
+                        <h1 className="display-5 fw-bold">Bem-vindo👋</h1>
                         <div className="d-flex justify-content">
                             <Link to={"/login"} className="btn btn-info btn-lg px-4">
                                 Entrar
