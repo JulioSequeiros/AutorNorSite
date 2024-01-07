@@ -23,7 +23,7 @@ const ViaturasList = () => {
                         Voltar
                     </Link>
 
-                    <Link to={"/student"} className="btn btn-success px-4 mx-2">
+                    <Link to={"/viatura"} className="btn btn-success px-4 mx-2">
                         Registar
                     </Link>
                 </div>
@@ -34,10 +34,9 @@ const ViaturasList = () => {
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Número</th>
-                        <th scope="col">Cidade</th>
-                        <th scope="col">Aniversário</th>
+                        <th scope="col">modelo</th>
+                        <th scope="col">ano</th>
+                        <th scope="col">proprietarioId</th>
                         <th scope="col"></th>
                     </tr>
                     </thead>
