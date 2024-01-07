@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import StudentsService from "../../../services/students.service";
+import MarcacaoService from "../../../services/marcacoes.service";
 import { Link } from 'react-router-dom';
+import marcacao from "./marcacao";
 
-const StudentsList = () => {
-    const [students, setStudents] = useState([]);
+
+const MarcacoesList = () => {
+    const [marcacoes, setMarcacoes] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
-            const data = await StudentsService.getAll();
-            setStudents(data.data);
+            const data = await MarcacaoService.getAll();
+            setMarcacoes(data.data);
         }
 
         fetchData();
@@ -22,7 +24,7 @@ const StudentsList = () => {
                         Voltar
                     </Link>
 
-                    <Link to={"/student"} className="btn btn-success px-4 mx-2">
+                    <Link to={"/marcacao"} className="btn btn-success px-4 mx-2">
                         Registar
                     </Link>
                 </div>
@@ -33,25 +35,24 @@ const StudentsList = () => {
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Número</th>
-                        <th scope="col">Cidade</th>
-                        <th scope="col">Aniversário</th>
-                        <th scope="col"></th>
+                        <th scope="col">data</th>
+                        <th scope="col">descricao</th>
+                        <th scope="col">viatura</th>
+                        <th scope="col">viaturaId</th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    {students.map((student, index) => (
-                        <tr key={student.id}>
+                    {marcacoes.map((marcacao, index) => (
+                        <tr key={marcacao.id}>
                             <td >{index + 1}</td>
-                            <td>{student.name}</td>
-                            <td>{student.number}</td>
-                            <td>{student.city}</td>
-                            <td>{student.birthday}</td>
+                            <td>{marcacao.data}</td>
+                            <td>{marcacao.descricao}</td>
+                            <td>{marcacao.viatura}</td>
+                            <td>{marcacao.viaturaId}</td>
                             <td>
                                 <div className="d-flex justify-content">
-                                    <Link to={`/student/${student.number}`} className='btn btn-primary me-2'>Editar</Link>
+                                    <Link to={`/viatura/${marcacao.id}`} className='btn btn-primary me-2'>Editar</Link>
                                 </div>
                             </td>
                         </tr>
@@ -63,4 +64,4 @@ const StudentsList = () => {
     );
 }
 
-export default StudentsList;
+export default MarcacoesList;
