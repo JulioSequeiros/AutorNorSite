@@ -42,6 +42,7 @@ const deleteUser = (id) => {
 };
 
 const ViaturasService = {
+    getAll,
     getById,
     createORupdate,
     create,
