@@ -5,18 +5,21 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { Link } from "react-router-dom";
 
-import StudentsService from "../../../services/students.service";
+import ManutencaoService from "../../../services/manutencoes.service";
 
-const Student = () => {
+const Manutencao = () => {
     const navigate = useNavigate();
 
 
     const params = useParams();
     const [id, setId] = useState(null);
-    const [number, setNumber] = useState("");
-    const [name, setName] = useState("");
-    const [city, setCity] = useState("");
-    const [birthday, setBirthday] = useState("");
+    const [descricao, setDescricao] = useState("");
+    const [data, setData] = useState("");
+    const [custo, setCusto] = useState("");
+    const [viatura, setViatura] = useState("");
+    const [viaturaId, setViaturaId] = useState("");
+    const [categoria, setCategoria] = useState("");
+    const [categoriaId, setCategoriaId] = useState("");
     const [successful, setSuccessful] = useState(null);
     const [message, setMessage] = useState("");
 
@@ -26,13 +29,16 @@ const Student = () => {
         }
 
         async function fetchData() {
-            const response = await StudentsService.getById(params.number);
+            const response = await ManutencaoService.getById(params.number);
 
             setId(response.data.id);
-            setNumber(response.data.number);
-            setName(response.data.name);
-            setCity(response.data.city);
-            setBirthday(response.data.birthday);
+            setDescricao(response.data.descricao);
+            setData(response.data.data);
+            setCusto(response.data.custo);
+            setViatura(response.data.viatura);
+            setViaturaId(response.data.viaturaId);
+            setCategoria(response.data.Categoria);
+            setCategoriaId(response.data.categoriaId);
         }
 
         fetchData();
@@ -51,16 +57,19 @@ const Student = () => {
         form.current.validateAll();
 
         if (checkBtn.current.context._errors.length === 0) {
-            StudentsService.createORupdate(id, number, name, city, birthday).then(
+            ManutencaoService.createORupdate(id, descricao, data, custo, viatura, viaturaId, categoria, categoriaId).then(
                 (response) => {
                     setMessage(response.data.message);
                     setSuccessful(true);
 
                     setId(response.data.id);
-                    setNumber(response.data.number);
-                    setName(response.data.name);
-                    setCity(response.data.city);
-                    setBirthday(response.data.birthday);
+                    setDescricao(response.data.descricao);
+                    setData(response.data.data);
+                    setCusto(response.data.custo);
+                    setViatura(response.data.viatura);
+                    setViaturaId(response.data.viaturaId);
+                    setCategoria(response.data.categoria);
+                    setCategoriaId(response.data.categoriaId);
                 },
                 (error) => {
                     const resMessage =
@@ -80,9 +89,9 @@ const Student = () => {
     const handleDelete = (e) => {
         e.preventDefault();
 
-        StudentsService.deleteUser(number).then(
+        ManutencaoService.deleteUser(id).then(
             (response) => {
-                navigate('/students-list');
+                navigate('/manutencoes-list');
             },
             (error) => {
                 const resMessage =
@@ -128,49 +137,25 @@ const Student = () => {
                                 <h1 className="h3 mb-3 fw-normal">Registar</h1>
 
                                 <div className="form-group">
-                                    <label>Número</label>
-                                    <Input
-                                        type="text"
-                                        className="form-control"
-                                        name="number"
-                                        value={number}
-                                        onChange= {(e) => setNumber(e.target.value)}
-                                        validations={[required]}
-                                    />
-                                </div>
-
-                                <div className="form-group">
-                                    <label>Nome</label>
+                                    <label>Manutencao</label>
                                     <Input
                                         type="text"
                                         className="form-control"
                                         name="name"
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
+                                        value={descricao}
+                                        onChange={(e) => setDescricao(e.target.value)}
                                         validations={[required, validLength]}
                                     />
                                 </div>
 
                                 <div className="form-group">
-                                    <label>Cidade</label>
+                                    <label>Data</label>
                                     <Input
                                         type="text"
                                         className="form-control"
-                                        name="city"
-                                        value={city}
-                                        onChange={(e) => setCity(e.target.value)}
-                                        validations={[required, validLength]}
-                                    />
-                                </div>
-
-                                <div className="form-group">
-                                    <label>Aniversário</label>
-                                    <Input
-                                        type="text"
-                                        className="form-control"
-                                        name="birthday"
-                                        value={birthday}
-                                        onChange={(e) => setBirthday(e.target.value)}
+                                        name="number"
+                                        value={data}
+                                        onChange={(e) => setData(e.target.value)}
                                         validations={[required]}
                                     />
                                 </div>
@@ -182,7 +167,7 @@ const Student = () => {
                                         Eliminar
                                     </button>)}
 
-                                    <Link to={"/students-list"} className="btn btn-secondary mt-2 mx-2">
+                                    <Link to={"/manutencoes-list"} className="btn btn-secondary mt-2 mx-2">
                                         Voltar
                                     </Link>
                                 </div>
@@ -216,4 +201,4 @@ const Student = () => {
     );
 }
 
-export default Student;
+export default Manutencao;

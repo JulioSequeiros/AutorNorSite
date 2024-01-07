@@ -5,18 +5,16 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { Link } from "react-router-dom";
 
-import StudentsService from "../../../services/students.service";
+import CategoriaService from "../../../services/categorias.service";
 
-const Student = () => {
+const categoria = () => {
     const navigate = useNavigate();
 
 
     const params = useParams();
     const [id, setId] = useState(null);
-    const [number, setNumber] = useState("");
-    const [name, setName] = useState("");
-    const [city, setCity] = useState("");
-    const [birthday, setBirthday] = useState("");
+    const [nome, setNome] = useState("");
+    const [manutencoes, setManutencoes] = useState("");
     const [successful, setSuccessful] = useState(null);
     const [message, setMessage] = useState("");
 
@@ -26,13 +24,11 @@ const Student = () => {
         }
 
         async function fetchData() {
-            const response = await StudentsService.getById(params.number);
+            const response = await categoriaService.getById(params.number);
 
             setId(response.data.id);
-            setNumber(response.data.number);
-            setName(response.data.name);
-            setCity(response.data.city);
-            setBirthday(response.data.birthday);
+            setNome(response.data.nome);
+            setManutencoes(response.data.manutencoes);
         }
 
         fetchData();
@@ -51,16 +47,14 @@ const Student = () => {
         form.current.validateAll();
 
         if (checkBtn.current.context._errors.length === 0) {
-            StudentsService.createORupdate(id, number, name, city, birthday).then(
+            CategoriaService.createORupdate(id, nome, manutencoes).then(
                 (response) => {
                     setMessage(response.data.message);
                     setSuccessful(true);
 
                     setId(response.data.id);
-                    setNumber(response.data.number);
-                    setName(response.data.name);
-                    setCity(response.data.city);
-                    setBirthday(response.data.birthday);
+                    setNome(response.data.nome);
+                    setManutencoes(response.data.manutencoes);
                 },
                 (error) => {
                     const resMessage =
@@ -80,9 +74,9 @@ const Student = () => {
     const handleDelete = (e) => {
         e.preventDefault();
 
-        StudentsService.deleteUser(number).then(
+        CategoriaService.deleteUser(id).then(
             (response) => {
-                navigate('/students-list');
+                navigate('/categorias-list');
             },
             (error) => {
                 const resMessage =
@@ -128,49 +122,25 @@ const Student = () => {
                                 <h1 className="h3 mb-3 fw-normal">Registar</h1>
 
                                 <div className="form-group">
-                                    <label>Número</label>
-                                    <Input
-                                        type="text"
-                                        className="form-control"
-                                        name="number"
-                                        value={number}
-                                        onChange= {(e) => setNumber(e.target.value)}
-                                        validations={[required]}
-                                    />
-                                </div>
-
-                                <div className="form-group">
-                                    <label>Nome</label>
+                                    <label>Categoria</label>
                                     <Input
                                         type="text"
                                         className="form-control"
                                         name="name"
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
+                                        value={nome}
+                                        onChange={(e) => setNome(e.target.value)}
                                         validations={[required, validLength]}
                                     />
                                 </div>
 
                                 <div className="form-group">
-                                    <label>Cidade</label>
+                                    <label>Manutencoes</label>
                                     <Input
                                         type="text"
                                         className="form-control"
-                                        name="city"
-                                        value={city}
-                                        onChange={(e) => setCity(e.target.value)}
-                                        validations={[required, validLength]}
-                                    />
-                                </div>
-
-                                <div className="form-group">
-                                    <label>Aniversário</label>
-                                    <Input
-                                        type="text"
-                                        className="form-control"
-                                        name="birthday"
-                                        value={birthday}
-                                        onChange={(e) => setBirthday(e.target.value)}
+                                        name="number"
+                                        value={manutencoes}
+                                        onChange={(e) => setManutencoes(e.target.value)}
                                         validations={[required]}
                                     />
                                 </div>
@@ -182,7 +152,7 @@ const Student = () => {
                                         Eliminar
                                     </button>)}
 
-                                    <Link to={"/students-list"} className="btn btn-secondary mt-2 mx-2">
+                                    <Link to={"/categorias-list"} className="btn btn-secondary mt-2 mx-2">
                                         Voltar
                                     </Link>
                                 </div>
@@ -216,4 +186,4 @@ const Student = () => {
     );
 }
 
-export default Student;
+export default Categoria;

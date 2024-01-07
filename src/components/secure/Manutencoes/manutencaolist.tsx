@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import StudentsService from "../../../services/students.service";
+import ManutencaoService from "../../../services/manutencoes.service";
 import { Link } from 'react-router-dom';
+import manutencao from "./manutencao";
 
-const StudentsList = () => {
-    const [students, setStudents] = useState([]);
+
+const ManutencoesList = () => {
+    const [manutencoes, setManutencoes] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
-            const data = await StudentsService.getAll();
-            setStudents(data.data);
+            const data = await ManutencaoService.getAll();
+            setManutencoes(data.data);
         }
 
         fetchData();
@@ -22,7 +24,7 @@ const StudentsList = () => {
                         Voltar
                     </Link>
 
-                    <Link to={"/student"} className="btn btn-success px-4 mx-2">
+                    <Link to={"/manutencao"} className="btn btn-success px-4 mx-2">
                         Registar
                     </Link>
                 </div>
@@ -33,25 +35,30 @@ const StudentsList = () => {
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Número</th>
-                        <th scope="col">Cidade</th>
-                        <th scope="col">Aniversário</th>
-                        <th scope="col"></th>
+                        <th scope="col">descricao</th>
+                        <th scope="col">data</th>
+                        <th scope="col">custo</th>
+                        <th scope="col">viatura</th>
+                        <th scope="col">viaturaId</th>
+                        <th scope="col">categoria</th>
+                        <th scope="col">categoriaId</th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    {students.map((student, index) => (
-                        <tr key={student.id}>
+                    {manutencoes.map((manutencao, index) => (
+                        <tr key={manutencao.id}>
                             <td >{index + 1}</td>
-                            <td>{student.name}</td>
-                            <td>{student.number}</td>
-                            <td>{student.city}</td>
-                            <td>{student.birthday}</td>
+                            <td>{manutencao.descricao}</td>
+                            <td>{manutencao.data}</td>
+                            <td>{manutencao.custo}</td>
+                            <td>{manutencao.viatura}</td>
+                            <td>{manutencao.viaturaId}</td>
+                            <td>{manutencao.categoria}</td>
+                            <td>{manutencao.categoriaId}</td>
                             <td>
                                 <div className="d-flex justify-content">
-                                    <Link to={`/student/${student.number}`} className='btn btn-primary me-2'>Editar</Link>
+                                    <Link to={`/viatura/${manutencao.id}`} className='btn btn-primary me-2'>Editar</Link>
                                 </div>
                             </td>
                         </tr>
@@ -63,4 +70,4 @@ const StudentsList = () => {
     );
 }
 
-export default StudentsList;
+export default ManutencoesList;
