@@ -14,6 +14,7 @@ import Register from "./components/public/Register";
 //PRIVATE ROUTES
 import Dashboard from "./components/secure/Dashboard";
 import ViaturasList from "./components/secure/Viaturas/viaturalist";
+import viatura from "./components/secure/Viaturas/viatura";
 
 import Footer from "./components/shared/Footer";
 import Header from "./components/shared/Header";
@@ -27,6 +28,7 @@ const App = () => {
                     <Route element={<PrivateRoutes />}>
                         <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/viaturas-list" element={<ViaturasList />} />
+                        <Route path="/viatura" element={<viatura />} />
                         <Route path='*'element={<Navigate to="/dashboard" />} />
                     </Route>
 
