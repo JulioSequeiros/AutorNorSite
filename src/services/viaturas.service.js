@@ -12,6 +12,10 @@ axios.interceptors.request.use(
     }
 );
 
+const getAll = () => {
+    return axios.get(API_URL);
+};
+
 const getById = (number) => {
     return axios.get(API_URL + number);
 };
