@@ -34,10 +34,8 @@ const ViaturasList = () => {
                 <table className="table table-dark table-hover">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">modelo</th>
                         <th scope="col">ano</th>
-                        <th scope="col">proprietarioId</th>
                     </tr>
                     </thead>
 
