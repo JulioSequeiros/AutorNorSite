@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 import ViaturaService from "../../../services/viaturas.service";
 
-const Student = () => {
+const Viatura = () => {
     const navigate = useNavigate();
 
 
@@ -155,7 +155,7 @@ const Student = () => {
                                         Eliminar
                                     </button>)}
 
-                                    <Link to={"/students-list"} className="btn btn-secondary mt-2 mx-2">
+                                    <Link to={"/viaturas-list"} className="btn btn-secondary mt-2 mx-2">
                                         Voltar
                                     </Link>
                                 </div>
@@ -189,4 +189,4 @@ const Student = () => {
     );
 }
 
-export default Student;
+export default Viatura;
