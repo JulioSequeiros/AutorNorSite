@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ViaturaService from "../../../services/viaturas.service";
 import { Link } from 'react-router-dom';
-import viatura from "./viatura";
 
 
 const ViaturasList = () => {
@@ -25,7 +24,7 @@ const ViaturasList = () => {
                     </Link>
 
                     <Link to={"/viatura"} className="btn btn-success px-4 mx-2">
-                        Registar
+                        Registar Viatura
                     </Link>
                 </div>
             </section>
@@ -36,20 +35,21 @@ const ViaturasList = () => {
                     <tr>
                         <th scope="col">modelo</th>
                         <th scope="col">ano</th>
+                        <th scope="col">Proprietario</th>
                     </tr>
                     </thead>
 
                     <tbody>
                     {viaturas.map((viatura, index) => (
                         <tr key={viatura.id}>
-                            <td >{index + 1}</td>
-                            <td>{viatura.name}</td>
+                            <td>{index + 1}</td>
+                            <td>{viatura.number}</td>
                             <td>{viatura.modelo}</td>
                             <td>{viatura.ano}</td>
                             <td>{viatura.proprietarioId}</td>
                             <td>
                                 <div className="d-flex justify-content">
-                                    <Link to={`/viatura/${viatura.id}`} className='btn btn-primary me-2'>Editar</Link>
+                                    <Link to={`/viatura/${viatura.number}`} className='btn btn-primary me-2'>Editar</Link>
                                 </div>
                             </td>
                         </tr>

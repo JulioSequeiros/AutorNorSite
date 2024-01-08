@@ -3,21 +3,21 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-import PrivateRoutes from "./utils/privateRoute";
-import PublicRoutes from "./utils/publicRoute";
+import PrivateRoutes from "./utils/privateRoute.jsx";
+import PublicRoutes from "./utils/publicRoute.jsx";
 
 //PUBLIC ROUTES
-import Home from "./components/public/Home";
-import Login from "./components/public/Login";
-import Register from "./components/public/Register";
+import Home from "./components/public/Home.jsx";
+import Login from "./components/public/Login.jsx";
+import Register from "./components/public/Register.jsx";
 
 //PRIVATE ROUTES
-import Dashboard from "./components/secure/Dashboard";
-import ViaturasList from "./components/secure/Viaturas/viaturalist";
-import viatura from "./components/secure/Viaturas/viatura";
+import Dashboard from "./components/secure/Dashboard.jsx";
+import ViaturasList from "./components/secure/Viaturas/viaturalist.jsx";
+import viatura from "./components/secure/Viaturas/viatura.jsx";
 
-import Footer from "./components/shared/Footer";
-import Header from "./components/shared/Header";
+import Footer from "./components/shared/Footer.jsx";
+import Header from "./components/shared/Header.jsx";
 
 const App = () => {
     return (

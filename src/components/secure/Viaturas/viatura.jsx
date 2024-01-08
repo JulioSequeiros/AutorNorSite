@@ -10,7 +10,6 @@ import ViaturaService from "../../../services/viaturas.service";
 const Viatura = () => {
     const navigate = useNavigate();
 
-
     const params = useParams();
     const [id, setId] = useState(null);
     const [modelo, setModelo] = useState("");
