@@ -13,6 +13,7 @@ const Viatura = () => {
     const params = useParams();
     const [id, setId] = useState(null);
     const [modelo, setModelo] = useState("");
+    const [marca, setMarca] = useState("");
     const [ano, setAno] = useState("");
     const [proprietarioId, setProprietarioId] = useState("");
     const [successful, setSuccessful] = useState(null);
@@ -29,6 +30,7 @@ const Viatura = () => {
             setId(response.data.id);
             setModelo(response.data.modelo);
             setAno(response.data.ano);
+            setMarca(response.data.marca);
             setProprietarioId(response.data.proprietarioId);
         }
 
@@ -48,13 +50,14 @@ const Viatura = () => {
         form.current.validateAll();
 
         if (checkBtn.current.context._errors.length === 0) {
-            ViaturaService.createORupdate(id, modelo, ano, proprietarioId).then(
+            ViaturaService.createORupdate(id, modelo, marca, ano, proprietarioId).then(
                 (response) => {
                     setMessage(response.data.message);
                     setSuccessful(true);
 
                     setId(response.data.id);
                     setModelo(response.data.modelo);
+                    setMarca(response.data.marca);
                     setAno(response.data.ano);
                     setProprietarioId(response.data.proprietarioId);
                 },
@@ -124,14 +127,26 @@ const Viatura = () => {
                                 <h1 className="h3 mb-3 fw-normal">Registar</h1>
 
                                 <div className="form-group">
-                                    <label>Viatura</label>
+                                    <label>Marca</label>
+                                    <Input
+                                        type="texto"
+                                        className="form-control"
+                                        name="marca"
+                                        value={marca}
+                                        onChange={(e) => setMarca(e.target.value)}
+                                        validations={[required, validLength]}
+                                    />
+                                </div>
+
+                                <div className="form-group">
+                                    <label>Modelo</label>
                                     <Input
                                         type="text"
                                         className="form-control"
-                                        name="name"
+                                        name="modelo"
                                         value={modelo}
                                         onChange={(e) => setModelo(e.target.value)}
-                                        validations={[required, validLength]}
+                                        validations={[required]}
                                     />
                                 </div>
 
@@ -146,6 +161,7 @@ const Viatura = () => {
                                         validations={[required]}
                                     />
                                 </div>
+
 
                                 <div className="form-group">
                                     <button className="btn btn-success mt-2">Registar</button>
@@ -179,7 +195,7 @@ const Viatura = () => {
                                     </div>
                                 </div>
                             )}
-                            <CheckButton style={{ display: "none" }} ref={checkBtn} />
+                            <CheckButton style={{display: "none"}} ref={checkBtn}/>
                         </Form>
                     </div>
                 </div>

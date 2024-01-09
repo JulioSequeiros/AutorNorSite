@@ -14,10 +14,12 @@ import Register from "./components/public/Register.jsx";
 //PRIVATE ROUTES
 import Dashboard from "./components/secure/Dashboard.jsx";
 import ViaturasList from "./components/secure/Viaturas/viaturalist.jsx";
-import viatura from "./components/secure/Viaturas/viatura.jsx";
+import Viatura from "./components/secure/Viaturas/viatura.jsx";
 
 import Footer from "./components/shared/Footer.jsx";
 import Header from "./components/shared/Header.jsx";
+import Marcacaolist from "./components/secure/Marcacoes/marcacaolist.jsx";
+import Marcacao from "./components/secure/Marcacoes/marcacao.jsx";
 
 const App = () => {
     return (
@@ -28,7 +30,13 @@ const App = () => {
                     <Route element={<PrivateRoutes />}>
                         <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/viaturas-list" element={<ViaturasList />} />
-                        <Route path="/viatura" element={<viatura />} />
+                        <Route path="/viatura" element={<Viatura />} />
+                        <Route path="/viatura/:id" element={<Viatura />} />
+
+                        <Route path="/marcacao" element={<Marcacao />} />
+                        <Route path="/marcacoes-list" element={<Marcacaolist />} />
+
+
                         <Route path='*'element={<Navigate to="/dashboard" />} />
                     </Route>
 

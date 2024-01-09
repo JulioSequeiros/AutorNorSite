@@ -12,6 +12,8 @@ const register = (name, email, password) => {
         if (response.data.name) {
             localStorage.setItem("name", response.data.name);
             localStorage.setItem("token", response.data.token);
+            localStorage.setItem("id", response.data.id);
+
         }
 
         return response.data;
@@ -24,6 +26,7 @@ const login = (email, password) => {
             if (response.data.name) {
                 localStorage.setItem("name", response.data.name);
                 localStorage.setItem("token", response.data.token);
+                localStorage.setItem("id", response.data.id);
             }
 
             return response.data;

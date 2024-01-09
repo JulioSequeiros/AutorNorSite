@@ -23,6 +23,11 @@ const Dashboard = () => {
                         <Link to={'/viaturas-list'} className="btn btn-info btn-lg px-4 mx-2">
                             Viaturas
                         </Link>
+
+                        <Link to={'/marcacoes-list'} className="btn btn-info btn-lg px-4 mx-2">
+                            Marcações
+                        </Link>
+
                     </div>
                 </div>
             </div>

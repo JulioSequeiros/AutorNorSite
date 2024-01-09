@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://gestao-viaturas-manutencao.vercel.app/api/viaturas";
+const API_URL = "https://gestao-viaturas-manutencao.vercel.app/api/viaturas/";
 
 axios.interceptors.request.use(
     config => {
@@ -20,21 +20,21 @@ const getById = (number) => {
     return axios.get(API_URL + number);
 };
 
-const createORupdate = (id, modelo, ano, proprietarioId) => {
+const createORupdate = (id, modelo, marca, ano, proprietarioId) => {
     if(id == null){
-        return create(modelo, ano, proprietarioId);
+        return create(modelo, ano, marca, proprietarioId);
     }
     else {
-        return update(id, modelo, ano, proprietarioId);
+        return update(id, modelo, ano, marca, proprietarioId);
     }
 };
 
-const create = (modelo, ano, proprietarioId) => {
-    return axios.post(API_URL + "create", { modelo, ano, proprietarioId });
+const create = (modelo, ano, marca) => {
+    return axios.post(API_URL + "create", { modelo, ano: Number(ano), marca, proprietarioId : localStorage.getItem('id') });
 };
 
-const update = (id, modelo, ano, proprietarioId) => {
-    return axios.put(API_URL + "update", { id, modelo, ano, proprietarioId });
+const update = (id, modelo, ano, marca) => {
+    return axios.put(API_URL + "update", { id, modelo, marca, ano : Number(ano), proprietarioId : localStorage.getItem('id') });
 };
 
 const deleteUser = (id) => {

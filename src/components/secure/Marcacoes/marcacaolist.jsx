@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MarcacaoService from "../../../services/marcacoes.service";
 import { Link } from 'react-router-dom';
-import marcacao from "./marcacao";
 
 
 const MarcacoesList = () => {
@@ -23,10 +22,6 @@ const MarcacoesList = () => {
                     <Link to={"/"} className="btn btn-secondary px-4 mx-2">
                         Voltar
                     </Link>
-
-                    <Link to={"/marcacao"} className="btn btn-success px-4 mx-2">
-                        Registar
-                    </Link>
                 </div>
             </section>
 
@@ -34,27 +29,20 @@ const MarcacoesList = () => {
                 <table className="table table-dark table-hover">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">data</th>
                         <th scope="col">descricao</th>
-                        <th scope="col">viatura</th>
-                        <th scope="col">viaturaId</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Modelo</th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    {marcacoes.map((marcacao, index) => (
+                    {marcacoes.map((marcacao) => (
                         <tr key={marcacao.id}>
-                            <td >{index + 1}</td>
                             <td>{marcacao.data}</td>
                             <td>{marcacao.descricao}</td>
-                            <td>{marcacao.viatura}</td>
-                            <td>{marcacao.viaturaId}</td>
-                            <td>
-                                <div className="d-flex justify-content">
-                                    <Link to={`/viatura/${marcacao.id}`} className='btn btn-primary me-2'>Editar</Link>
-                                </div>
-                            </td>
+                            <td>{marcacao.viatura.marca}</td>
+                            <td>{marcacao.viatura.modelo}</td>
                         </tr>
                     ))}
                     </tbody>

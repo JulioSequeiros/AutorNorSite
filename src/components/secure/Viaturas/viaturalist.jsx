@@ -33,23 +33,25 @@ const ViaturasList = () => {
                 <table className="table table-dark table-hover">
                     <thead>
                     <tr>
+                        <th scope="col">marca</th>
                         <th scope="col">modelo</th>
                         <th scope="col">ano</th>
                         <th scope="col">Proprietario</th>
+                        <th></th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    {viaturas.map((viatura, index) => (
+                    {viaturas.map((viatura) => (
                         <tr key={viatura.id}>
-                            <td>{index + 1}</td>
-                            <td>{viatura.number}</td>
+                            <td>{viatura.marca}</td>
                             <td>{viatura.modelo}</td>
                             <td>{viatura.ano}</td>
-                            <td>{viatura.proprietarioId}</td>
+                            <td>{viatura.proprietario?.name}</td>
                             <td>
                                 <div className="d-flex justify-content">
-                                    <Link to={`/viatura/${viatura.number}`} className='btn btn-primary me-2'>Editar</Link>
+                                    <Link to={`/viatura/${viatura.id}`} className='btn btn-primary me-2'>Editar</Link>
+                                    <Link to={`/marcacoes/${viatura.id}`} className='btn btn-primary me-2'>Marcar</Link>
                                 </div>
                             </td>
                         </tr>
