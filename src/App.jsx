@@ -34,6 +34,7 @@ const App = () => {
                         <Route path="/viatura/:id" element={<Viatura />} />
 
                         <Route path="/marcacao" element={<Marcacao />} />
+                        <Route path="/marcacao/:id" element={<Marcacao />} />
                         <Route path="/marcacoes-list" element={<Marcacaolist />} />
 
 

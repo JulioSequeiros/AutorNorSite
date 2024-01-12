@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://gestao-viaturas-manutencao.vercel.app/api/viaturas";
+const API_URL = "https://gestao-viaturas-manutencao.vercel.app/api/marcacoes";
 
 axios.interceptors.request.use(
     config => {

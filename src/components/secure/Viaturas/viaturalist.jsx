@@ -51,7 +51,7 @@ const ViaturasList = () => {
                             <td>
                                 <div className="d-flex justify-content">
                                     <Link to={`/viatura/${viatura.id}`} className='btn btn-primary me-2'>Editar</Link>
-                                    <Link to={`/marcacoes/${viatura.id}`} className='btn btn-primary me-2'>Marcar</Link>
+                                    <Link to={`/marcacao/${viatura.id}`} className='btn btn-primary me-2'>Marcar</Link>
                                 </div>
                             </td>
                         </tr>
