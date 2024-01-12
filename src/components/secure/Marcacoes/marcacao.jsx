@@ -166,7 +166,7 @@ const Marcacao = () => {
 
                             {successful && (
                                 <div className="alert alert-success mt-2" role="alert">
-                                    Gravado com sucesso!
+                                    Guardado com sucesso!
                                 </div>
                             )}
 

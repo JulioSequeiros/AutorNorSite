@@ -34,8 +34,8 @@ const CategoriasList = () => {
                 <table className="table table-dark table-hover">
                     <thead>
                     <tr>
-                        <th scope="col">nome</th>
-                        <th scope="col">manutencoes</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Manutencões</th>
                     </tr>
                     </thead>
 

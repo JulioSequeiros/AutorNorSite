@@ -24,7 +24,7 @@ const categoria = () => {
         }
 
         async function fetchData() {
-            const response = await categoriaService.getById(params.number);
+            const response = await CategoriaService.getById(params.number);
 
             setId(response.data.id);
             setNome(response.data.nome);
