@@ -8,7 +8,7 @@ const ViaturasList = () => {
 
     useEffect(() => {
         async function fetchData() {
-            const data = await ViaturaService.getAll();
+            const data = await ViaturaService.getByOwnerId();
             setViaturas(data.data);
         }
 

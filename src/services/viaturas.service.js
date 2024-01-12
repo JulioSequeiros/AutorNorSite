@@ -16,6 +16,10 @@ const getAll = () => {
     return axios.get(API_URL);
 };
 
+const getByOwnerId = () => {
+    return axios.get(API_URL + 'owner/' + localStorage.getItem('id'));
+}
+
 const getById = (number) => {
     return axios.get(API_URL + number);
 };
@@ -43,6 +47,7 @@ const deleteUser = (id) => {
 
 const ViaturasService = {
     getAll,
+    getByOwnerId,
     getById,
     createORupdate,
     create,
