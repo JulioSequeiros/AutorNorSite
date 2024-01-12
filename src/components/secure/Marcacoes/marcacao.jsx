@@ -128,9 +128,9 @@ const Marcacao = () => {
                                 <h1 className="h3 mb-3 fw-normal">Registar</h1>
 
                                 <div className="form-group">
-                                    <label>Marcacao</label>
+                                    <label>Data da Marcação</label>
                                     <Input
-                                        type="text"
+                                        type="Date"
                                         className="form-control"
                                         name="name"
                                         value={data}

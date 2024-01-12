@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import MarcacaoService from "../../../services/marcacoes.service";
 import { Link } from 'react-router-dom';
+import marcacao from "./marcacao.jsx";
+import moment from "moment";
 
 
 const MarcacoesList = () => {
@@ -14,6 +16,8 @@ const MarcacoesList = () => {
 
         fetchData();
     }, []);
+
+    let formattedTime = moment(marcacao.data).format('DD/MM/YYYY HH:mm');
 
     return (
         <main>
@@ -39,7 +43,7 @@ const MarcacoesList = () => {
                     <tbody>
                     {marcacoes.map((marcacao) => (
                         <tr key={marcacao.id}>
-                            <td>{marcacao.data}</td>
+                            <td>{formattedTime}</td>
                             <td>{marcacao.descricao}</td>
                             <td>{marcacao.viatura.marca}</td>
                             <td>{marcacao.viatura.modelo}</td>
