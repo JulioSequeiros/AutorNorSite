@@ -5,7 +5,7 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { Link } from "react-router-dom";
 
-import MarcacaoService from "../../../services/marcacoes.service";
+import marcacoesService from "../../../services/marcacoes.service.js";
 
 const Marcacao = () => {
     const navigate = useNavigate();
@@ -21,18 +21,22 @@ const Marcacao = () => {
     const [message, setMessage] = useState("");
 
     useEffect(() => {
-        if (!params.number) {
+        setViaturaId(params.id);
+        return;
+
+
+        if (!params.id) {
             return;
         }
 
         async function fetchData() {
-            const response = await MarcacaoService.getById(params.number);
+            const response = await marcacoesService.getById(params.id);
 
             setId(response.data.id);
             setData(response.data.data);
             setDescricao(response.data.descricao);
-            setViatura(response.data.viatura);
-            setViaturaId(response.data.viaturaId);
+            setViatura(response.data.viatura.viatura);
+            setViaturaId(response.data.viatura.viaturaId);
         }
 
         fetchData();
@@ -51,7 +55,7 @@ const Marcacao = () => {
         form.current.validateAll();
 
         if (checkBtn.current.context._errors.length === 0) {
-            MarcacaoService.createORupdate(id, data, descricao, viatura, viaturaId).then(
+            marcacoesService.createORupdate(id, data, descricao, viatura, viaturaId).then(
                 (response) => {
                     setMessage(response.data.message);
                     setSuccessful(true);
@@ -59,8 +63,8 @@ const Marcacao = () => {
                     setId(response.data.id);
                     setData(response.data.data);
                     setDescricao(response.data.descricao);
-                    setViatura(response.data.viatura);
-                    setViaturaId(response.data.viaturaId);
+                    setViatura(response.data.viatura.viatura);
+                    setViaturaId(response.data.viatura.viaturaId);
                 },
                 (error) => {
                     const resMessage =
@@ -80,7 +84,7 @@ const Marcacao = () => {
     const handleDelete = (e) => {
         e.preventDefault();
 
-        MarcacaoService.deleteUser(id).then(
+        marcacoesService.deleteUser(id).then(
             (response) => {
                 navigate('/marcacoes-list');
             },
@@ -125,12 +129,12 @@ const Marcacao = () => {
                     <div className="container-fluid py-5">
                         <Form onSubmit={handleRegister} ref={form} className="col-4">
                             <div>
-                                <h1 className="h3 mb-3 fw-normal">Registar</h1>
+                                <h1 className="h3 mb-3 fw-normal">Faz a Marcação</h1>
 
                                 <div className="form-group">
                                     <label>Data da Marcação</label>
                                     <Input
-                                        type="Date"
+                                        type="datetime-local"
                                         className="form-control"
                                         name="name"
                                         value={data}

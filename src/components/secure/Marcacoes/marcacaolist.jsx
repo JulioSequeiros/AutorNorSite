@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import MarcacaoService from "../../../services/marcacoes.service";
+import MarcacoesService from "../../../services/marcacoes.service";
 import { Link } from 'react-router-dom';
 import marcacao from "./marcacao.jsx";
 import moment from "moment";
@@ -10,7 +10,7 @@ const MarcacoesList = () => {
 
     useEffect(() => {
         async function fetchData() {
-            const data = await MarcacaoService.getAll();
+            const data = await MarcacoesService.getAll();
             setMarcacoes(data.data);
         }
 
@@ -47,6 +47,11 @@ const MarcacoesList = () => {
                             <td>{marcacao.descricao}</td>
                             <td>{marcacao.viatura.marca}</td>
                             <td>{marcacao.viatura.modelo}</td>
+                            <td>
+                                <div className="d-flex justify-content">Estado da Manutenção
+                                    <Link to={`/manutencao-list/${viatura.id}`} className='btn btn-primary me-2'>Marcar</Link>
+                                </div>
+                            </td>
                         </tr>
                     ))}
                     </tbody>

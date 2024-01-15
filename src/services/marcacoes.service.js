@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://gestao-viaturas-manutencao.vercel.app/api/marcacoes";
+const API_URL = "https://gestao-viaturas-manutencao.vercel.app/api/marcacoes/";
 
 axios.interceptors.request.use(
     config => {
@@ -30,7 +30,7 @@ const createORupdate = (id, data, descricao, viatura, viaturaId) => {
 };
 
 const create = (data, descricao, viatura, viaturaId) => {
-    return axios.post(API_URL + "create", { data, descricao, viatura, viaturaId });
+    return axios.post(API_URL + "create", { data, descricao, viaturaid: Number(viaturaId) });
 };
 
 const update = (id, data, descricao, viatura, viaturaId) => {
