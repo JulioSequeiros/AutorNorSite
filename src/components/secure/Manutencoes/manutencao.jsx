@@ -37,7 +37,7 @@ const Manutencao = () => {
             setCusto(response.data.custo);
             setViatura(response.data.viatura);
             setViaturaId(response.data.viaturaId);
-            setCategoria(response.data.Categoria);
+            setCategoria(response.data.categoria);
             setCategoriaId(response.data.categoriaId);
         }
 
