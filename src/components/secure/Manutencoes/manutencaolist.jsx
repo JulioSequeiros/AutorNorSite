@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import ManutencaoService from "../../../services/manutencoes.service";
+import ManutencoesService from "../../../services/manutencoes.service.js";
 import { Link } from 'react-router-dom';
-import manutencao from "./manutencao";
 
 
 const ManutencoesList = () => {
@@ -9,7 +8,7 @@ const ManutencoesList = () => {
 
     useEffect(() => {
         async function fetchData() {
-            const data = await ManutencaoService.getAll();
+            const data = await ManutencoesService.getAll();
             setManutencoes(data.data);
         }
 
@@ -34,28 +33,22 @@ const ManutencoesList = () => {
                 <table className="table table-dark table-hover">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">descricao</th>
                         <th scope="col">data</th>
                         <th scope="col">custo</th>
                         <th scope="col">viatura</th>
-                        <th scope="col">viaturaId</th>
                         <th scope="col">categoria</th>
-                        <th scope="col">categoriaId</th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    {manutencoes.map((manutencao, index) => (
+                    {manutencoes.map((manutencao) => (
                         <tr key={manutencao.id}>
-                            <td >{index + 1}</td>
                             <td>{manutencao.descricao}</td>
                             <td>{manutencao.data}</td>
                             <td>{manutencao.custo}</td>
-                            <td>{manutencao.viatura}</td>
-                            <td>{manutencao.viaturaId}</td>
-                            <td>{manutencao.categoria}</td>
-                            <td>{manutencao.categoriaId}</td>
+                            <td>{manutencao.viatura.marca}</td>
+                            <td>{manutencao.categoria.nome}</td>
                             <td>
                                 <div className="d-flex justify-content">
                                     <Link to={`/viatura/${manutencao.id}`} className='btn btn-primary me-2'>Editar</Link>

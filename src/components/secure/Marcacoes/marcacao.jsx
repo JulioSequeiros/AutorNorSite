@@ -147,7 +147,7 @@ const Marcacao = () => {
                                     <Input
                                         type="datetime-local"
                                         className="form-control"
-                                        name="name"
+                                        name="data"
                                         value={data}
                                         onChange={(e) => setData(e.target.value)}
                                         validations={[required, validLength]}
@@ -159,7 +159,7 @@ const Marcacao = () => {
                                     <Input
                                         type="text"
                                         className="form-control"
-                                        name="number"
+                                        name="descrição"
                                         value={descricao}
                                         onChange={(e) => setDescricao(e.target.value)}
                                         validations={[required]}

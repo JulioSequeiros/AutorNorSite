@@ -9,8 +9,6 @@ import CategoriaService from "../../../services/categorias.service";
 
 const categoria = () => {
     const navigate = useNavigate();
-
-
     const params = useParams();
     const [id, setId] = useState(null);
     const [nome, setNome] = useState("");
@@ -186,4 +184,4 @@ const categoria = () => {
     );
 }
 
-export default Categoria;
+export default categoria;

@@ -20,6 +20,8 @@ import Footer from "./components/shared/Footer.jsx";
 import Header from "./components/shared/Header.jsx";
 import Marcacaolist from "./components/secure/Marcacoes/marcacaolist.jsx";
 import Marcacao from "./components/secure/Marcacoes/marcacao.jsx";
+import Manutencao from "./components/secure/Manutencoes/manutencao.jsx";
+import Manutencaolist from "./components/secure/Manutencoes/manutencaolist.jsx";
 
 const App = () => {
     return (
@@ -37,6 +39,9 @@ const App = () => {
                         <Route path="/marcacao/:id" element={<Marcacao />} />
                         <Route path="/marcacoes-list" element={<Marcacaolist />} />
 
+                        <Route path="/manutencao" element={<Manutencao />} />
+                        <Route path="/manutencao/:id" element={<Manutencao />} />
+                        <Route path="/manutencao-list" element={<Manutencaolist />} />
 
                         <Route path='*'element={<Navigate to="/dashboard" />} />
                     </Route>
