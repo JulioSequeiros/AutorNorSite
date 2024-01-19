@@ -25,7 +25,7 @@ const Dashboard = () => {
                         </Link>
 
                         <Link to={'/marcacoes-list'} className="btn btn-info btn-lg px-4 mx-2">
-                            Marcações
+                            Manutenção
                         </Link>
 
                     </div>

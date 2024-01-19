@@ -12,6 +12,11 @@ axios.interceptors.request.use(
     }
 );
 
+const getAll = (number) => {
+    return axios.get("https://gestao-viaturas-manutencao.vercel.app/api/categorias");
+};
+
+
 const getById = (number) => {
     return axios.get(API_URL + number);
 };
@@ -38,6 +43,7 @@ const deleteUser = (id) => {
 };
 
 const CategoriasService = {
+    getAll,
     getById,
     createORupdate,
     create,

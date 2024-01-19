@@ -6,6 +6,7 @@ import CheckButton from "react-validation/build/button";
 import { Link } from "react-router-dom";
 
 import marcacoesService from "../../../services/marcacoes.service.js";
+import categoriasService from "../../../services/categorias.service.js";
 
 const Marcacao = () => {
     const navigate = useNavigate();
@@ -17,10 +18,20 @@ const Marcacao = () => {
     const [descricao, setDescricao] = useState("");
     const [viatura, setViatura] = useState("");
     const [viaturaId, setViaturaId] = useState("");
+    const [categoriaId, setCategoriaId] = useState("");
+
     const [successful, setSuccessful] = useState(null);
     const [message, setMessage] = useState("");
 
+    const [cat, setCat] = useState([]);
+
     useEffect(() => {
+        async function fetchCat() {
+            const response = await categoriasService.getAll();
+            setCat(response.data);
+        }
+        fetchCat();
+
         setViaturaId(params.id);
         return;
 
@@ -55,7 +66,7 @@ const Marcacao = () => {
         form.current.validateAll();
 
         if (checkBtn.current.context._errors.length === 0) {
-            marcacoesService.createORupdate(id, data, descricao, viatura, viaturaId).then(
+            marcacoesService.createORupdate(id, data, descricao, viatura, viaturaId, categoriaId).then(
                 (response) => {
                     setMessage(response.data.message);
                     setSuccessful(true);
@@ -156,7 +167,22 @@ const Marcacao = () => {
                                 </div>
 
                                 <div className="form-group">
-                                    <button className="btn btn-success mt-2">Registar</button>
+                                    <label>Categoria</label>
+
+                                    <select name="categoriaId" id="categoriaId"
+                                            onChange={(e) => setCategoriaId(e.target.value)}
+                                    >
+                                        {cat.map((categoria) => (
+                                            <option value={categoria.id}>{categoria.nome}</option>
+
+                                        ))}
+                                    </select>
+
+
+                                </div>
+
+                                <div className="form-group">
+                                <button className="btn btn-success mt-2">Registar</button>
 
                                     {id && (<button onClick={handleDelete} className="btn btn-danger mt-2 mx-2">
                                         Eliminar

@@ -20,21 +20,21 @@ const getById = (number) => {
     return axios.get(API_URL + number);
 };
 
-const createORupdate = (id, data, descricao, viatura, viaturaId) => {
+const createORupdate = (id, data, descricao, viatura, viaturaId, categoriaId) => {
     if(id == null){
-        return create(data, descricao, viatura, viaturaId);
+        return create(data, descricao, viatura, viaturaId, categoriaId);
     }
     else {
-        return update(id, data, descricao, viatura, viaturaId);
+        return update(id, data, descricao, viatura, viaturaId, categoriaId);
     }
 };
 
-const create = (data, descricao, viatura, viaturaId) => {
-    return axios.post(API_URL + "create", { data, descricao, viaturaid: Number(viaturaId) });
+const create = (data, descricao, viatura, viaturaId, categoriaId) => {
+    return axios.post(API_URL + "create", { data, descricao, viaturaid: Number(viaturaId), categoriaId: Number(categoriaId) });
 };
 
-const update = (id, data, descricao, viatura, viaturaId) => {
-    return axios.put(API_URL + "update", { id, data, descricao, viatura, viaturaId });
+const update = (id, data, descricao, viatura, viaturaId, categoriaId) => {
+    return axios.put(API_URL + "update", { id, data, descricao, viatura, viaturaid: Number(viaturaId), categoriaId: Number(categoriaId) });
 };
 
 const deleteUser = (id) => {
