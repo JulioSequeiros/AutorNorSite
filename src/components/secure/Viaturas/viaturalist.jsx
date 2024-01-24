@@ -9,7 +9,9 @@ const ViaturasList = () => {
     useEffect(() => {
         async function fetchData() {
             const data = await ViaturaService.getByOwnerId();
-            setViaturas(data.data);
+            if(data.data?.length)
+                setViaturas(data.data);
+
         }
 
         fetchData();
@@ -51,7 +53,7 @@ const ViaturasList = () => {
                             <td>
                                 <div className="d-flex justify-content">
                                     <Link to={`/viatura/${viatura.id}`} className='btn btn-primary me-2'>Editar</Link>
-                                    <Link to={`/manutencao/${viatura.id}`} className='btn btn-primary me-2'>Marcar</Link>
+                                    <Link to={`/marcacao/${viatura.id}`} className='btn btn-primary me-2'>Marcar</Link>
                                 </div>
                             </td>
                         </tr>
@@ -63,4 +65,4 @@ const ViaturasList = () => {
     );
 }
 
-export default ViaturasList;
+export default  ViaturasList;

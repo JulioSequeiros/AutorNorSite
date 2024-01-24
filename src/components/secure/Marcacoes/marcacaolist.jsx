@@ -3,20 +3,10 @@ import MarcacoesService from "../../../services/marcacoes.service";
 import { Link } from 'react-router-dom';
 import marcacao from "./marcacao.jsx";
 import moment from "moment";
-import Randomizer from '../../shared/Randomizer.jsx';
-import numberGenerator from "../../shared/NumberGenerator.jsx";
-import viatura from "../Viaturas/viatura.jsx";
-import NumberGenerator from "../../shared/NumberGenerator.jsx";
 
 
 const MarcacoesList = () => {
     const [marcacoes, setMarcacoes] = useState([]);
-
-    const texts = [
-        'Manutenção',
-        'Inspeção',
-        'Revesião',
-    ];
 
     useEffect(() => {
         async function fetchData() {
@@ -59,8 +49,8 @@ const MarcacoesList = () => {
                             <td>{marcacao.descricao}</td>
                             <td>{marcacao.viatura.marca}</td>
                             <td>{marcacao.viatura.modelo}</td>
-                            <td><Randomizer texts={texts} /></td>
-                            <td><NumberGenerator /></td>
+                            <td>{marcacao?.categoria.modelo}</td>
+                            <td> preco </td>
                         </tr>
                     ))}
                     </tbody>

@@ -174,7 +174,6 @@ const Marcacao = () => {
                                     >
                                         {cat.map((categoria) => (
                                             <option value={categoria.id}>{categoria.nome}</option>
-
                                         ))}
                                     </select>
 
