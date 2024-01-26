@@ -48,6 +48,7 @@ const Marcacao = () => {
             setDescricao(response.data.descricao);
             setViatura(response.data.viatura.viatura);
             setViaturaId(response.data.viatura.viaturaId);
+            setCategoriaId(response.data.categoria.categoriaId)
         }
 
         fetchData();
@@ -76,6 +77,7 @@ const Marcacao = () => {
                     setDescricao(response.data.descricao);
                     setViatura(response.data.viatura.viatura);
                     setViaturaId(response.data.viatura.viaturaId);
+                    setCategoriaId(response.data.categoria.categoriaId);
                 },
                 (error) => {
                     const resMessage =

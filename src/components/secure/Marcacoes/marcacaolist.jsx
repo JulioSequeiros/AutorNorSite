@@ -3,6 +3,8 @@ import MarcacoesService from "../../../services/marcacoes.service";
 import { Link } from 'react-router-dom';
 import marcacao from "./marcacao.jsx";
 import moment from "moment";
+import NumberGenerator from "../../shared/NumberGenerator.jsx";
+
 
 
 const MarcacoesList = () => {
@@ -49,8 +51,8 @@ const MarcacoesList = () => {
                             <td>{marcacao.descricao}</td>
                             <td>{marcacao.viatura.marca}</td>
                             <td>{marcacao.viatura.modelo}</td>
-                            <td>{marcacao?.categoria.modelo}</td>
-                            <td> preco </td>
+                            <td>{marcacao?.categoria.nome}</td>
+                            <td><NumberGenerator /></td>
                         </tr>
                     ))}
                     </tbody>

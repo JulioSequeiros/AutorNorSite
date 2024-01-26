@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://gestao-viaturas-manutencao.vercel.app/api/categoria/";
+const API_URL = "http://localhost:8081/api/categorias/";
 
 axios.interceptors.request.use(
     config => {
@@ -13,7 +13,7 @@ axios.interceptors.request.use(
 );
 
 const getAll = (number) => {
-    return axios.get("https://gestao-viaturas-manutencao.vercel.app/api/categorias");
+    return axios.get(API_URL);
 };
 
 
